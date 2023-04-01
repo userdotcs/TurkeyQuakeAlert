@@ -28,7 +28,7 @@ class KandilliGetter:
             json.dump(self.quake_list[0], file, indent=3)
 
     def save_quake_to_json_at(self, index: int, path="quake.json"):
-        if(index > len(self.quake_list) - 1 or index < 0):
+        if index > len(self.quake_list) - 1 or index < 0:
             raise errors.IndexOutOfList(index, len(self.quake_list))
         else:
             with open(path, "w") as file:
