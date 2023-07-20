@@ -23,12 +23,21 @@ class KandilliGetter:
             }
             self.quake_list.append(quake)
     
+    def get_quakes(self):
+        return self.quake_list
+    
+    def get_quake_at(self, index: int):
+        if index >= len(self.quake_list) or index < 0:
+            raise errors.IndexOutOfList(index, len(self.quake_list))
+        else:
+            return self.quake_list[index]
+
     def save_lastquake_to_json(self, path="quake.json"):
         with open(path, "w") as file:
             json.dump(self.quake_list[0], file, indent=3)
 
     def save_quake_to_json_at(self, index: int, path="quake.json"):
-        if index > len(self.quake_list) - 1 or index < 0:
+        if index >= len(self.quake_list) or index < 0:
             raise errors.IndexOutOfList(index, len(self.quake_list))
         else:
             with open(path, "w") as file:
